@@ -1,30 +1,22 @@
 <?php
-/*
- * Implementing hook_permission
+
+/**
+ * Implementing hook_permission 
  */
 function sports_permission(){
- return array(
-    'administer sports' => array(
-      'title' => t('Administer sports'), 
-      'description' => t('Perform administration tasks for sports module.'),
-    ),
-  ); 
-}
-/*
- * Implementing hook_menu
- */
-function sports_menu(){
-  $items['load'] = array(
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('sports_load_form'),
-    'access arguments' => array('administer sports'),
-    'file' => 'includes/sports.callbacks.inc',
-    'type' => MENU_CALLBACK,
+  return array(
+      'coach' => array(
+          'title' => 'Coach',
+          'description' => 'Coach administration',
+      ),
   );
+}
+
+function sports_menu() {
   $items['stopwatch'] = array(
     'page callback' => 'drupal_get_form',
     'page arguments' => array('sports_stopwatch_form'),
-    'access arguments' => array('administer sports'),
+    'access arguments' => array('access content'), 
     'file' => 'includes/sports.callbacks.inc',
     'type' => MENU_CALLBACK,
   );

@@ -1,0 +1,63 @@
+<?php
+
+function sports_schema() {
+  $schema['sports_stopwatch'] = array(
+    'description' => t('All stopwatch data'),
+      'fields' => array(
+        'data_id' => array(
+          'description' => 'Primary identifier',
+          'type' => 'serial', 
+          'unsigned' => TRUE, 
+          'not null' => TRUE,
+        ), 
+        'uid' => array(
+          'description' => 'User ID',
+          'type' => 'int',
+          'length' => 10,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'created' => array(
+          'description' => 'date created',
+          'type' => 'int',
+          'length' => 25,
+          'not null' => TRUE,
+          'default' => REQUEST_TIME,
+        ),
+        'session' => array(
+          'description' => 'Links multiple data to one training',
+          'type' => 'int',
+          'length' => 25,
+          'not null' => TRUE,
+        ),
+      'data' => array(
+        'description' => 'Serialized storage of trainingsdata.',
+        'type' => 'text',
+        'serialize' => TRUE,
+      ),
+       
+      ),
+      'primary key' => array('data_id'),
+  );
+  
+  $schema['sports_sports'] = array(
+    'description' => t('Stores to which sport data is associated'),
+    'fields' => array(
+        'sid' => array(
+            'description' => t('Sport ID'),
+            'type' => 'int', 
+            'length' => 10,
+            'not null' => TRUE,
+        ),
+        'data_id' => array(
+          'description' => 'Primary identifier',
+          'type' => 'serial', 
+          'unsigned' => TRUE, 
+          'not null' => TRUE,
+        ), 
+    ),
+    'primary key' => array('data_id'),
+  );
+  
+  return $schema;
+}

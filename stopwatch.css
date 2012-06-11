@@ -1,0 +1,16 @@
+#sports-stopwatch-form{
+  position:fixed;
+  left:0;
+  top:115px;
+  height:100%;
+  width:100%;
+}
+
+.sw-settings{
+}
+.sw-field{
+  display:inline-block;
+  width:15%;
+  height:50%;
+  float:left;
+}
