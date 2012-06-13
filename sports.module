@@ -22,3 +22,9 @@ function sports_menu() {
   );
   return $items;
 }
+
+function sports_preprocess_page(&$vars){
+  if(arg(0) == 'stopwatch'){
+    $vars['theme_hook_suggestions'][0] = 'page__content_only';
+  }
+}

@@ -6,9 +6,13 @@
       $('.start_timer').click(function(){
         var index = $(this).attr('index');
         $('.triggervalue[index="'+ index + '"], .split[index="'+ index + '"]').toggle();
-        $('.timer[index="'+ index + '"]').stopwatch().stopwatch('toggle');
+        $('.timer[index="'+ index + '"]').stopwatch().stopwatch('toggle').toggleClass('active');
+        if($('.timer').hasClass('active')) {$('#edit-settings, #edit-submission').fadeOut()}
+        else{
+          $('#edit-settings, #edit-submission').fadeIn();
+        };
       });
-      
+      $('.sortable').sortable();
       // register splts
       $('.split').click(function(){
         var index = $(this).attr('index');
@@ -24,6 +28,10 @@
           splits += "\n" + time;
         }
         field.attr('split', split + 1).html(splits).val(splits);
+        if(split > 10){
+          var height = field.css('height').replace('px', '');
+        field.scrollTop(parseInt(height));
+        }
       })
     }
   }
