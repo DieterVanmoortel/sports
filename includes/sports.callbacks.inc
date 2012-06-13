@@ -12,7 +12,8 @@ function sports_stopwatch_form(){
 //      '#title' => t('Athletes or lanes'),
 //      '#options' => array('Athletes', 'Lanes'),
 //  );
- 
+  kpr('test');
+  kpr($settings['users']);
   $form['pre']['#markup'] = '<div class="sortable">';
   for($i = 0; $i < count($settings['users']); $i++) {
     $form[$i] = array(
@@ -75,8 +76,7 @@ function get_settings($type) {
   $settings = array();
   switch($type) {
     case 'stopwatch':
-      $settings['users'] = array('Dieter', 'Bientje', 'Melanie', 'Elien');
-      $settings['users'] = array(1,2,3,4,5,6);
+      $settings['users'] = variable_get('active_users', array(1,2,3,4,5,6));
       $settings['maxlanes'] = 1;
       $settings['distance'] = 50;
       break; 
